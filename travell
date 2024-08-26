@@ -1,0 +1,622 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.animation as animation
+
+def mobius_strip(u, v, t):
+    """Calcula as coordenadas da fita de Möbius com uma transformação temporal.
+    
+    Args:
+        u (float): Coordenada ao longo da fita.
+        v (float): Coordenada ao longo da largura da fita.
+        t (float): Tempo (para transformação temporal).
+    
+    Returns:
+        tuple: Coordenadas (x, y, z) da fita de Möbius.
+    """
+    theta = 2 * np.pi * u
+    phi = np.pi * v
+    r = 1 + 0.5 * np.cos(theta / 2 + t)
+    x = r * np.cos(theta)
+    y = r * np.sin(theta)
+    z = 0.5 * np.sin(phi + t)
+    return x, y, z
+
+def update(frame):
+    """Atualiza a visualização para o frame atual."""
+    ax.cla()  # Limpa o eixo para a próxima animação
+    import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.animation as animation
+
+def mobius_strip(u, v, t):
+    """Calcula as coordenadas da fita de Möbius com uma transformação temporal.
+    
+    Args:
+        u (float): Coordenada ao longo da fita.
+        v (float): Coordenada ao longo da largura da fita.
+        t (float): Tempo (para transformação temporal).
+    
+    Returns:
+        tuple: Coordenadas (x, y, z) da fita de Möbius.
+    """
+    theta = 2 * np.pi * u
+    phi = np.pi * v
+    # Aplicando uma transformação temporal no raio
+    r = 1 + 0.5 * np.cos(theta / 2 + t)
+    # Adicionando uma modulação temporal nas coordenadas z
+    z = 0.5 * np.sin(phi + t)
+    x = r * np.cos(theta)
+    y = r * np.sin(theta)
+    return x, y, z
+
+def update(frame):
+    """Atualiza a visualização para o frame atual."""
+    ax.cla()  # Limpa o eixo para a próxima animação
+    u = np.linspace(0, 1, 100)
+    v = np.linspace(-1, 1, 20)
+    u, v = np.meshgrid(u, v)
+    x, y, z = mobius_strip(u, v, frame * 0.1)  # Atualiza com o tempo
+    ax.plot_surface(x, y, z, cmap='viridis')
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.set_title('Fita de Möbius em Viagem no Tempo')
+
+# Configura o gráfico
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+# Cria a animação
+ani = animation.FuncAnimation(fig, update, frames=500, interval=600, repeat=True)
+
+# Exibe a animação
+plt.show()
+def mobius_strip(u, v, t):
+    """Calcula as coordenadas da fita de Möbius com uma modulação temporal.
+    
+    Args:
+        u (float): Coordenada ao longo da fita.
+        v (float): Coordenada ao longo da largura da fita.
+        t (float): Tempo (para transformação temporal).
+    
+    Returns:
+        tuple: Coordenadas (x, y, z) da fita de Möbius.
+    """
+    theta = 2 * np.pi * u
+    phi = np.pi * v
+    # Distância temporal que modifica a geometria
+    distance_factor = np.sin(t)
+    r = 1 + 0.5 * np.cos(theta / 2) * distance_factor
+    x = r * np.cos(theta)
+    y = r * np.sin(theta)
+    z = 0.5 * np.sin(phi + t)
+    return x, y, z
+def mobius_strip(u, v, t):
+    """Calcula as coordenadas da fita de Möbius com uma modulação temporal.
+    
+    Args:
+        u (float): Coordenada ao longo da fita.
+        v (float): Coordenada ao longo da largura da fita.
+        t (float): Tempo (para transformação temporal).
+    
+    Returns:
+        tuple: Coordenadas (x, y, z) da fita de Möbius.
+    """
+    theta = 2 * np.pi * u
+    phi = np.pi * v
+    # Distância temporal que modifica a geometria
+    distance_factor = np.sin(t)
+    r = 1 + 0.5 * np.cos(theta / 2) * distance_factor
+    x = r * np.cos(theta)
+    y = r * np.sin(theta)
+    z = 0.5 * np.sin(phi + t)
+    return x, y, z
+def update(frame):
+    """Atualiza a visualização para o frame atual."""
+    ax.cla()  # Limpa o eixo para a próxima animação
+    u = np.linspace(0, 1, 100)
+    v = np.linspace(-1, 1, 20)
+    u, v = np.meshgrid(u, v)
+    x, y, z = mobius_strip(u, v, frame * 0.05)  # Ajusta a taxa de mudança no tempo
+    ax.plot_surface(x, y, z, cmap='inferno', edgecolor='none')
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.set_title(f'Fita de Möbius em Viagem no Tempo (Frame {frame})')
+
+# Configura o gráfico
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+# Cria a animação
+ani = animation.FuncAnimation(fig, update, frames=500, interval=50, repeat=True)
+
+# Exibe a animação
+plt.show()
+def update(frame):
+    """Atualiza a visualização para o frame atual."""
+    ax.cla()  # Limpa o eixo para a próxima animação
+    u = np.linspace(0, 1, 100)
+    v = np.linspace(-1, 1, 20)
+    u, v = np.meshgrid(u, v)
+    x, y, z = mobius_strip(u, v, frame * 0.05)  # Ajusta a taxa de mudança no tempo
+    ax.plot_surface(x, y, z, cmap='inferno', edgecolor='none')
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.set_title(f'Fita de Möbius em Viagem no Tempo (Frame {frame})')
+
+# Configura o gráfico
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+# Cria a animação
+ani = animation.FuncAnimation(fig, update, frames=500, interval=50, repeat=True)
+
+# Exibe a animação
+plt.show()
+
+    
+    u = np.linspace(0, 1, 100)
+    v = np.linspace(-1, 1, 20)
+    u, v = np.meshgrid(u, v)
+    x, y, z = mobius_strip(u, v, frame * 0.1)  # Atualiza com o tempo
+    ax.plot_surface(x, y, z, cmap='viridis')
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.set_title('Fita de Möbius em Viagem no Tempo')
+
+# Configura o gráfico
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+# Cria a animação
+ani = animation.FuncAnimation(fig, update, frames=500, interval=600, repeat=True)
+
+# Exibe a animação
+plt.show()
+db = {
+    "pacientes": {},
+    "exames": {},
+    "modelos": {}
+}
+
+def definir_paciente(id, nome, idade, historico_medico):
+    db["pacientes"][id] = {
+        "nome": nome,
+        "idade": idade,
+        "historico_medico": historico_medico
+    }
+    print(f"Paciente {nome} definido com sucesso.")
+
+def definir_exame(id_paciente, tipo_exame, resultado):
+ se id_paciente não em db["pacientes"]:
+        print("Paciente não encontrado.")
+ retornar
+    db["exames"].setdefault(id_paciente, []).append({
+        "tipo_exame": tipo_exame,
+        "resultado": resultado
+    })
+    print(f"Exame {tipo_exame} definido para paciente {id_paciente}.")
+
+def treinar_modelo(nome_modelo, dados_treinamento):
+    # Simulação de treinamento de modelo
+    db["modelos"][nome_modelo] = "Modelo treinado com dados: " + dados_treinamento
+    print(f"Modelo {nome_modelo} treinado com sucesso.")
+
+def salvar_modelo(nome_modelo, caminho_arquivo):
+ se nome_modelo não em db["modelos"]:
+        print("Modelo não encontrado.")
+ retornar
+ com open(caminho_arquivo, 'w') como f:
+        json.dump(db["modelos"][nome_modelo], f)
+    print(f"Modelo {nome_modelo} salvo em {caminho_arquivo}.")
+
+def fazer_previsao(nome_modelo, id_paciente):
+ se nome_modelo não em db["modelos"]:
+        print("Modelo não encontrado.")
+ retornar
+ se id_paciente não em db["pacientes"]:
+        print("Paciente não encontrado.")
+ retornar
+    print(f"Previsão para paciente {id_paciente} usando modelo {nome_modelo}.")
+
+def mostrar_diagnostico(id_paciente):
+ se id_paciente não em db["pacientes"]:
+        print("Paciente não encontrado.")
+ retornar
+    exames = db["exames"].get(id_paciente, [])
+    print(f"Diagnóstico para paciente {id_paciente}:")
+ Para exame em exames:
+        print(f"Tipo de Exame: {exame['tipo_exame']}, Resultado: {exame['resultado']}")
+
+def buscar_dados(id_paciente):
+    paciente = db["pacientes"].get(id_paciente)
+ se paciente:
+        print(f"Dados do Paciente {id_paciente}: {paciente}")
+ mais:
+        print("Paciente não encontrado.")
+
+def atualizar_dados(id_paciente, campo, novo_valor):
+    paciente = db["pacientes"].get(id_paciente)
+ se paciente:
+        paciente[campo] = novo_valor
+        print(f"Dados do Paciente {id_paciente} atualizados.")
+ mais:
+        print("Paciente não encontrado.")
+
+def processar_comando(comando):
+    comandos = comando.split()
+ ação = comandos[0]
+
+    if acao == "definir_paciente":
+        definir_paciente(comandos[1], comandos[2], int(comandos[3]), ' '.join(comandos[4:]))
+    elif acao == "definir_exame":
+        definir_exame(comandos[1], comandos[2], ' '.join(comandos[3:]))
+    elif acao == "treinar_modelo":
+        treinar_modelo(comandos[1], ' '.join(comandos[2:]))
+    Elif Acao == "salvar_modelo":
+        salvar_modelo(comandos[1], comandos[2])
+    elif acao == "fazer_previsao":
+        fazer_previsao(comandos[1], comandos[2])
+    Elif Acao == "mostrar_diagnostico":
+        mostrar_diagnostico(comandos[1])
+    elif acao == "buscar_dados":
+        buscar_dados(comandos[1])
+    elif acao == "atualizar_dados":
+        atualizar_dados(comandos[1], comandos[2], ' '.join(comandos[3:]))
+    mais:
+        print("Comando não reconhecido.")
+
+if __name__ == "__main__":
+ enquanto Verdadeiro:
+        comando = input("Digite um comando: ")
+        processar_comando(comando)****
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.animation as animation
+
+def mobius_strip(u, v, t):
+    """Calcula as coordenadas da fita de Möbius com uma transformação temporal.
+    
+    Args:
+        u (float): Coordenada ao longo da fita.
+        v (float): Coordenada ao longo da largura da fita.
+        t (float): Tempo (para transformação temporal).
+    
+    Returns:
+        tuple: Coordenadas (x, y, z) da fita de Möbius.
+    """
+    theta = 2 * np.pi * u
+    phi = np.pi * v
+    r = 1 + 0.5 * np.cos(theta / 2 + t)
+    x = r * np.cos(theta)
+    y = r * np.sin(theta)
+    z = 0.5 * np.sin(phi + t)
+    return x, y, z
+
+def update(frame):
+    """Atualiza a visualização para o frame atual."""
+    ax.cla()  # Limpa o eixo para a próxima animação
+    u = np.linspace(0, 1, 100)
+    v = np.linspace(-1, 1, 20)
+    u, v = np.meshgrid(u, v)
+    x, y, z = mobius_strip(u, v, frame * 0.1)  # Atualiza com o tempo
+    ax.plot_surface(x, y, z, cmap='viridis')
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.set_title('Fita de Möbius em Viagem no Tempo')
+
+# Configura o gráfico
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+# Cria a animação
+ani = animation.FuncAnimation(fig, update, frames=500, interval=600, repeat=True)
+
+# Exibe a animação
+plt.show()
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+class MobiusScriptInterpreter:
+    def __init__(self):
+        self.params = {}
+        self.figure = None
+        self.ax = None
+
+    def parse_line(self, line):
+        line = line.strip()
+        if line.startswith("CREATE"):
+            self.create_object(line)
+        elif line.startswith("PARAMETERS"):
+            self.parse_parameters(line)
+        elif line.startswith("RENDER"):
+            self.render()
+
+    def create_object(self, line):
+        if "MobiusStrip" in line:
+            self.params['object'] = 'MobiusStrip'
+    
+    def parse_parameters(self, line):
+        params_section = line.split("{")[1].split("}")[0]
+        params = params_section.split('\n')
+        for param in params:
+            if ':' in param:
+                key, value = param.split(':')
+                self.params[key.strip()] = float(value.strip())
+
+    def mobius_strip(self, u, v):
+        theta = 2 * np.pi * u
+        phi = np.pi * v
+        r = 1 + 0.5 * np.cos(theta / 2)
+        x = r * np.cos(theta)
+        y = r * np.sin(theta)
+        z = 0.5 * np.sin(phi)
+        return x, y, z
+
+    def render(self):
+        if 'object' in self.params and self.params['object'] == 'MobiusStrip':
+            u = np.linspace(self.params['u_min'], self.params['u_max'], int(self.params['resolution_u']))
+            v = np.linspace(self.params['v_min'], self.params['v_max'], int(self.params['resolution_v']))
+            u, v = np.meshgrid(u, v)
+            x, y, z = self.mobius_strip(u, v)
+            
+            self.figure = plt.figure()
+            self.ax = self.figure.add_subplot(111, projection='3d')
+            self.ax.plot_surface(x, y, z, cmap='viridis')
+
+            self.ax.set_xlabel('X')
+            self.ax.set_ylabel('Y')
+            self.ax.set_zlabel('Z')
+            self.ax.set_title('Fita de Möbius')
+
+            plt.show()
+
+# Exemplo de uso
+code = """
+CREATE MobiusStrip
+PARAMETERS {
+    u_min: 0
+    u_max: 1
+    v_min: -1
+    v_max: 1
+    resolution_u: 100
+    resolution_v: 20
+}
+RENDER
+"""
+
+interpreter = MobiusScriptInterpreter()
+for line in code.strip().split('\n'):
+    interpreter.parse_line(line)
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.animation as animation
+
+def mobius_strip(u, v, t):
+    """Calcula as coordenadas da fita de Möbius com uma transformação temporal.
+    
+    Args:
+        u (float): Coordenada ao longo da fita.
+        v (float): Coordenada ao longo da largura da fita.
+        t (float): Tempo (para transformação temporal).
+    
+    Returns:
+        tuple: Coordenadas (x, y, z) da fita de Möbius.
+    """
+    theta = 2 * np.pi * u
+    phi = np.pi * v
+    r = 1 + 0.5 * np.cos(theta / 2 + t)
+    x = r * np.cos(theta)
+    y = r * np.sin(theta)
+    z = 0.5 * np.sin(phi + t)
+    return x, y, z
+
+def update(frame):
+    """Atualiza a visualização para o frame atual."""
+    ax.cla()  # Limpa o eixo para a próxima animação
+    u = np.linspace(0, 1, 100)
+    v = np.linspace(-1, 1, 20)
+    u, v = np.meshgrid(u, v)
+    x, y, z = mobius_strip(u, v, frame * 0.1)  # Atualiza com o tempo
+    ax.plot_surface(x, y, z, cmap='viridis')
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.set_title('Fita de Möbius em Viagem no Tempo')
+
+# Configura o gráfico
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+# Cria a animação
+ani = animation.FuncAnimation(fig, update, frames=500, interval=600, repeat=True)
+
+# Exibe a animação
+plt.show()
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.animation as animation
+
+def mobius_strip(u, v, t):
+    """Calcula as coordenadas da fita de Möbius com uma transformação temporal.
+    
+    Args:
+        u (float): Coordenada ao longo da fita.
+        v (float): Coordenada ao longo da largura da fita.
+        t (float): Tempo (para transformação temporal).
+    
+    Returns:
+        tuple: Coordenadas (x, y, z) da fita de Möbius.
+    """
+    theta = 2 * np.pi * u
+    phi = np.pi * v
+    r = 1 + 0.5 * np.cos(theta / 2 + t)
+    x = r * np.cos(theta)
+    y = r * np.sin(theta)
+    z = 0.5 * np.sin(phi + t)
+    return x, y, z
+
+def update(frame):
+    """Atualiza a visualização para o frame atual."""
+    ax.cla()  # Limpa o eixo para a próxima animação
+    u = np.linspace(0, 1, 100)
+    v = np.linspace(-1, 1, 20)
+    u, v = np.meshgrid(u, v)
+    x, y, z = mobius_strip(u, v, frame * 0.1)  # Atualiza com o tempo
+    ax.plot_surface(x, y, z, cmap='viridis')
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.set_title('Fita de Möbius em Viagem no Tempo')
+
+# Configura o gráfico
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+# Cria a animação
+ani = animation.FuncAnimation(fig, update, frames=500, interval=600, repeat=True)
+
+# Exibe a animação
+plt.show()
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.animation as animation
+
+def mobius_strip_torsion(u, v, t):
+    """Calcula as coordenadas da fita de Möbius com torção adicional.
+    
+    Args:
+        u (float): Coordenada ao longo da fita.
+        v (float): Coordenada ao longo da largura da fita.
+        t (float): Tempo (para transformação temporal).
+    
+    Returns:
+        tuple: Coordenadas (x, y, z) da fita de Möbius com torção.
+    """
+    theta = 2 * np.pi * u
+    phi = np.pi * v
+    torsion = np.sin(t * 0.1)  # Torção adicional que varia com o tempo
+    r = 1 + 0.5 * np.cos(theta / 2)
+    x = r * np.cos(theta + torsion)
+    y = r * np.sin(theta + torsion)
+    z = 0.5 * np.sin(phi + t)
+    return x, y, z
+
+def update(frame):
+    """Atualiza a visualização para o frame atual."""
+    ax.cla()
+    u = np.linspace(0, 1, 100)
+    v = np.linspace(-1, 1, 20)
+    u, v = np.meshgrid(u, v)
+    x, y, z = mobius_strip_torsion(u, v, frame * 0.1)
+    ax.plot_surface(x, y, z, cmap='plasma')
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.set_title('Fita de Möbius com Torção Adicional')
+
+# Configura o gráfico
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+# Cria a animação
+ani = animation.FuncAnimation(fig, update, frames=500, interval=50, repeat=True)
+
+# Exibe a animação
+plt.show()
+def mobius_strip_spiral(u, v, t):
+    """Calcula as coordenadas da fita de Möbius com espiral dinâmica.
+    
+    Args:
+        u (float): Coordenada ao longo da fita.
+        v (float): Coordenada ao longo da largura da fita.
+        t (float): Tempo (para transformação temporal).
+    
+    Returns:
+        tuple: Coordenadas (x, y, z) da fita de Möbius com espiral.
+    """
+    theta = 2 * np.pi * u
+    phi = np.pi * v
+    spiral = np.sin(t * 0.1)  # Espiral dinâmica que varia com o tempo
+    r = 1 + 0.5 * np.cos(theta + spiral)
+    x = r * np.cos(theta)
+    y = r * np.sin(theta)
+    z = 0.5 * np.sin(phi + t)
+    return x, y, z
+
+def update(frame):
+    """Atualiza a visualização para o frame atual."""
+    ax.cla()
+    u = np.linspace(0, 1, 100)
+    v = np.linspace(-1, 1, 20)
+    u, v = np.meshgrid(u, v)
+    x, y, z = mobius_strip_spiral(u, v, frame * 0.1)
+    ax.plot_surface(x, y, z, cmap='inferno')
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.set_title('Fita de Möbius com Espiral Dinâmica')
+
+# Configura o gráfico
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+# Cria a animação
+ani = animation.FuncAnimation(fig, update, frames=500, interval=50, repeat=True)
+
+# Exibe a animação
+plt.show()
+def mobius_strip_deformation(u, v, t):
+    """Calcula as coordenadas da fita de Möbius com deformação temporal.
+    
+    Args:
+        u (float): Coordenada ao longo da fita.
+        v (float): Coordenada ao longo da largura da fita.
+        t (float): Tempo (para transformação temporal).
+    
+    Returns:
+        tuple: Coordenadas (x, y, z) da fita de Möbius com deformação.
+    """
+    theta = 2 * np.pi * u
+    phi = np.pi * v
+    deformation = np.sin(t * 0.2)  # Deformação temporal que varia com o tempo
+    r = 1 + 0.5 * np.cos(theta)
+    x = r * np.cos(theta) + deformation * np.sin(phi)
+    y = r * np.sin(theta) + deformation * np.cos(phi)
+    z = 0.5 * np.sin(phi + t)
+    return x, y, z
+
+def update(frame):
+    """Atualiza a visualização para o frame atual."""
+    ax.cla()
+    u = np.linspace(0, 1, 100)
+    v = np.linspace(-1, 1, 20)
+    u, v = np.meshgrid(u, v)
+    x, y, z = mobius_strip_deformation(u, v, frame * 0.1)
+    ax.plot_surface(x, y, z, cmap='cividis')
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.set_title('Fita de Möbius com Deformação Temporal')
+
+# Configura o gráfico
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+# Cria a animação
+ani = animation.FuncAnimation(fig, update, frames=500, interval=50, repeat=True)
+
+# Exibe a animação
+plt.show()
+
