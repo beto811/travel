@@ -619,4 +619,154 @@ ani = animation.FuncAnimation(fig, update, frames=500, interval=50, repeat=True)
 
 # Exibe a animação
 plt.show()
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.animation as animation
+
+def mobius_strip_base(u, v, t):
+    """Calcula as coordenadas da fita de Möbius base."""
+    theta = 2 * np.pi * u
+    phi = np.pi * v
+    r = 1 + 0.5 * np.cos(theta / 2 + t)
+    x = r * np.cos(theta)
+    y = r * np.sin(theta)
+    z = 0.5 * np.sin(phi + t)
+    return x, y, z
+
+def mobius_strip_torsion(u, v, t):
+    """Calcula as coordenadas da fita de Möbius com torção adicional."""
+    theta = 2 * np.pi * u
+    phi = np.pi * v
+    torsion = np.sin(t * 0.1)  # Torção adicional
+    r = 1 + 0.5 * np.cos(theta / 2)
+    x = r * np.cos(theta + torsion)
+    y = r * np.sin(theta + torsion)
+    z = 0.5 * np.sin(phi + t)
+    return x, y, z
+
+def mobius_strip_spiral(u, v, t):
+    """Calcula as coordenadas da fita de Möbius com espiral dinâmica."""
+    theta = 2 * np.pi * u
+    phi = np.pi * v
+    spiral = np.sin(t * 0.1)  # Espiral dinâmica
+    r = 1 + 0.5 * np.cos(theta + spiral)
+    x = r * np.cos(theta)
+    y = r * np.sin(theta)
+    z = 0.5 * np.sin(phi + t)
+    return x, y, z
+
+def mobius_strip_deformation(u, v, t):
+    """Calcula as coordenadas da fita de Möbius com deformação temporal."""
+    theta = 2 * np.pi * u
+    phi = np.pi * v
+    deformation = np.sin(t * 0.2)  # Deformação temporal
+    r = 1 + 0.5 * np.cos(theta)
+    x = r * np.cos(theta) + deformation * np.sin(phi)
+    y = r * np.sin(theta) + deformation * np.cos(phi)
+    z = 0.5 * np.sin(phi + t)
+    return x, y, z
+
+def update(frame, func, cmap, title):
+    """Atualiza a visualização para o frame atual."""
+    ax.cla()  # Limpa o eixo para a próxima animação
+    u = np.linspace(0, 1, 100)
+    v = np.linspace(-1, 1, 20)
+    u, v = np.meshgrid(u, v)
+    x, y, z = func(u, v, frame * 0.1)
+    ax.plot_surface(x, y, z, cmap=cmap)
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.set_title(title)
+
+# Configura o gráfico
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+# Escolha a função e os parâmetros desejados
+func = mobius_strip_deformation
+cmap = 'cividis'
+title = 'Fita de Möbius com Deformação Temporal'
+
+# Cria a animação
+ani = animation.FuncAnimation(fig, update, frames=500, fargs=(func, cmap, title), interval=50, repeat=True)
+
+# Exibe a animação
+plt.show()
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.animation as animation
+
+def mobius_strip_base(u, v, t):
+    """Calcula as coordenadas da fita de Möbius base."""
+    theta = 2 * np.pi * u
+    phi = np.pi * v
+    r = 1 + 0.5 * np.cos(theta / 2 + t)
+    x = r * np.cos(theta)
+    y = r * np.sin(theta)
+    z = 0.5 * np.sin(phi + t)
+    return x, y, z
+
+def mobius_strip_torsion(u, v, t):
+    """Calcula as coordenadas da fita de Möbius com torção adicional."""
+    theta = 2 * np.pi * u
+    phi = np.pi * v
+    torsion = np.sin(t * 0.1)  # Torção adicional
+    r = 1 + 0.5 * np.cos(theta / 2)
+    x = r * np.cos(theta + torsion)
+    y = r * np.sin(theta + torsion)
+    z = 0.5 * np.sin(phi + t)
+    return x, y, z
+
+def mobius_strip_spiral(u, v, t):
+    """Calcula as coordenadas da fita de Möbius com espiral dinâmica."""
+    theta = 2 * np.pi * u
+    phi = np.pi * v
+    spiral = np.sin(t * 0.1)  # Espiral dinâmica
+    r = 1 + 0.5 * np.cos(theta + spiral)
+    x = r * np.cos(theta)
+    y = r * np.sin(theta)
+    z = 0.5 * np.sin(phi + t)
+    return x, y, z
+
+def mobius_strip_deformation(u, v, t):
+    """Calcula as coordenadas da fita de Möbius com deformação temporal."""
+    theta = 2 * np.pi * u
+    phi = np.pi * v
+    deformation = np.sin(t * 0.2)  # Deformação temporal
+    r = 1 + 0.5 * np.cos(theta)
+    x = r * np.cos(theta) + deformation * np.sin(phi)
+    y = r * np.sin(theta) + deformation * np.cos(phi)
+    z = 0.5 * np.sin(phi + t)
+    return x, y, z
+
+def update(frame, func, cmap, title):
+    """Atualiza a visualização para o frame atual."""
+    ax.cla()  # Limpa o eixo para a próxima animação
+    u = np.linspace(0, 1, 100)
+    v = np.linspace(-1, 1, 20)
+    u, v = np.meshgrid(u, v)
+    x, y, z = func(u, v, frame * 0.1)
+    ax.plot_surface(x, y, z, cmap=cmap)
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.set_title(title)
+
+# Configura o gráfico
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+# Escolha a função e os parâmetros desejados
+func = mobius_strip_deformation
+cmap = 'cividis'
+title = 'Fita de Möbius com Deformação Temporal'
+
+# Cria a animação
+ani = animation.FuncAnimation(fig, update, frames=500, fargs=(func, cmap, title), interval=50, repeat=True)
+
+# Exibe a animação
+plt.show()
 
